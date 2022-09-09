@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 import 'dotenv/config';
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
 
 export const conn =
     process.env.NODE_ENV === "production"
@@ -28,7 +28,7 @@ export const conn =
             ssl: true,
         })
         : new Sequelize(
-            `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+            `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
 
 
             { logging: false, native: false }
